@@ -1,0 +1,32 @@
+\documentclass[10pt, letterpaper, notitlepage]{report}
+\usepackage{kactlpkg}
+\kactlcontentdir{../content}
+
+% UniShortName and 
+\university{ETH Zürich}{Eidgenössische Technische Hochschule Zürich}{eth} % UniShortName, UniFullName, UniLogoName
+\team{lETHargy}{Antti Röyskö, Yuhao Yao, Marcel Bezdrighin} % TeamName, TeamMembers 
+\title{adapted from MIT's version of the KTH ACM Contest Template Library}{\today} % Title, date
+
+\begin{document}
+	\maketeampage
+	% Small KACTL header on the first page:
+	% \maketitle{``One Last Time'' Edition}{\today}
+	\begin{multicols*}{3}
+	%\setcounter{tocdepth}{0} % maybe want sections?
+	%\tableofcontents
+	\thispagestyle{fancy}
+	\kactlchapter{contest}
+	\kactlchapter{misc}
+	\kactlchapter{datastruct}
+	\kactlchapter{graph}
+	\kactlchapter{string}
+	\kactlchapter{numerical}
+	\kactlchapter{number-theory}
+	\kactlchapter{combinatorics}
+	\kactlchapter{geometry}
+	\end{multicols*}
+
+	%\begin{multicols*}{3}
+	%\kactlchapter{appendix}
+	%\end{multicols*}
+\end{document}
