@@ -1,6 +1,6 @@
 /**
  * Author: Yuhao Yao
- * Date: 22-10-24
+ * Date: 23-02-26
  * Description: Basic polynomial struct. Usually we use $modnum$ as template parameter. $inv(k)$ gives the inverse of the polynomial $mod~ x^k$ (by default $k$ is the highest power plus one).
  * Status: inv() tested on https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence.
  */
@@ -10,8 +10,14 @@ struct poly: vector<T> {
 	poly(const vector<T> &vec): vector<T>(vec) {}
 	
 	friend poly& operator *=(poly &a, const poly &b) { 
-		FFT<T> fft;
-		a = fft.conv(a, b);
+		if (min(sz(a), sz(b)) <= 128) {
+			poly c(sz(a) + sz(b) - 1);
+			rep(i, 0, sz(a) - 1) rep(j, 0, sz(b) - 1) c[i + j] += a[i] * b[j];
+			swap(a, c);
+		} else {
+			FFT<T> fft;
+			a = fft.conv(a, b);
+		}
 		return a;
 	}
 	friend poly operator *(const poly &a, const poly &b) { auto c = a; return c *= b; }
